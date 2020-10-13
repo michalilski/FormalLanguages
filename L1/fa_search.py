@@ -1,25 +1,29 @@
-from utils import display_setup
-from sys import stderr
+def prepare_alphabet(text):
+    pass
 
-def display_config(pattern, file_name):
-    print('Algorithm: FA')
-    display_setup(pattern, file_name)
+def compute_transition_function(pattern, alphabet):
+    tf = dict()
+    m = len(pattern)
+    for q in range(m+1):
+        for a in alphabet:
+            k = min(m, q+1)
+            while not has_end(pattern[:q]+a, pattern[:k]):
+                k -= 1
+            tf[(q, a)] = k
+    return tf, m
 
-def transition(pattern):
-    return None
     
-def fa(pattern, file_name):
-    display_config(pattern, file_name)
-    T = get_prefix_table(pattern)
-    i = 0
-    try:
-        with open(file_name, 'r') as file:
-            char = file.read(1)
-            while char:
-                #fa here
-                char = file.read(1)
-    
-    except:
-        stderr.write(f'File {file_name} could not be found. Make sure that your file is in the same directory as scripts.\n')
+def finite_automation_matcher(text, tf, m):
+    res = []
+    n = len(text)
+    q = 0
+    for i in range(n):
+        q = tf[(q,text[i])]
+        if q == m:
+            res.append(i-m+1)
+    return res
+            
 
+def has_end(a, b):
+    return a[len(a)-len(b):]==b
 
