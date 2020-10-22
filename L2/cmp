@@ -1,0 +1,4 @@
+#!/bin/bash
+
+lex zad1.l
+cc lex.yy.c -o main -ll
