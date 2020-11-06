@@ -15,10 +15,12 @@ def compute_transition_function(pattern, alphabet):
     
 def finite_automation_matcher(text, tf, m):
     res = []
-    n = len(text)
     q = 0
-    for i in range(n):
-        q = tf[(q,text[i])]
+    for i, letter in enumerate(text):
+        if (q, letter) in tf:
+            q = tf[(q,letter)]
+        else:
+            q = 0
         if q == m:
             res.append(i-m+1)
     return res

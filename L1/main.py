@@ -10,19 +10,12 @@ def parse_args():
     return argv
 
 def main():
-    _, search_type, pattern, file_name = parse_args()
-    try:
-        with open(file_name, 'r') as file:
-            text = file.read()
-    except:
-        stderr.write(f'File {file_name} could not be found.')
-        exit(1)
-
+    _, search_type, pattern, file_name = parse_args()  
     if(search_type.lower() == 'fa'):
-        tf, m = compute_transition_function(pattern, alphabet=''.join(set(text)))
-        res = finite_automation_matcher(text, tf, m)
+        tf, m = compute_transition_function(pattern, alphabet=''.join(set(pattern)))
+        res = finite_automation_matcher(read_file(file_name), tf, m)
     else:
-        res = kmp_matcher(text, pattern)
+        res = kmp_matcher(read_file(file_name), pattern)
     
     print('Indices:', end=" ")
 
@@ -34,6 +27,18 @@ def main():
     
     print('Total found:', len(res))
 
+
+def read_file(file_name):
+    BUFFER_SIZE=2048
+    try:
+        with open(file_name, 'r') as file:
+            text = file.read(BUFFER_SIZE)
+            while text:
+                yield from text
+                text = file.read(BUFFER_SIZE)
+    except:
+        stderr.write(f'File {file_name} could not be found.')
+        exit(1)
 
 if __name__ == "__main__":
     main()

@@ -11,7 +11,7 @@ def main():
             ###
 '''to jest string
     #zawiera cos co wyglada
-    jak komentarz\'\'\'
+    jak komentarz\'''
     #ale to wcale'' """nie jest""" ####
     koment##arz
     '''

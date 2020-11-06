@@ -13,14 +13,13 @@ def compute_prefix_function(pattern):
     
 def kmp_matcher(text, pattern):
     res = []
-    n = len(text)
     m = len(pattern)
     pi = compute_prefix_function(pattern)
     q = 0
-    for i in range(n):
-        while q > 0 and pattern[q] != text[i]:
+    for i, letter in enumerate(text):
+        while q > 0 and pattern[q] != letter:
            q = pi[q-1]
-        if pattern[q] == text[i]:
+        if pattern[q] == letter:
            q += 1
         if q == m:
            res.append(i-(m-1))

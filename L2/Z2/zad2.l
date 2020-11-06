@@ -20,7 +20,9 @@ int yylex();
 <single_line_double_quote_string>\\\' ECHO;
 <single_line_single_quote_string>\'  { ECHO; BEGIN(INITIAL); }
 <double_line_double_quote_string>\"\"\" { ECHO; BEGIN(INITIAL); }
+<double_line_double_quote_string>\\\" ECHO;
 <double_line_single_quote_string>\'\'\' { ECHO; BEGIN(INITIAL); }
+<double_line_single_quote_string>\\\' ECHO;
 %%
 
 int main() { 

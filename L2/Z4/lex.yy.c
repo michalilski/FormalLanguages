@@ -351,8 +351,8 @@ static void yynoreturn yy_fatal_error ( const char* msg  );
 	(yy_hold_char) = *yy_cp; \
 	*yy_cp = '\0'; \
 	(yy_c_buf_p) = yy_cp;
-#define YY_NUM_RULES 14
-#define YY_END_OF_BUFFER 15
+#define YY_NUM_RULES 11
+#define YY_END_OF_BUFFER 12
 /* This struct is not used in this scanner,
    but its presence is necessary. */
 struct yy_trans_info
@@ -360,30 +360,28 @@ struct yy_trans_info
 	flex_int32_t yy_verify;
 	flex_int32_t yy_nxt;
 	};
-static const flex_int16_t yy_accept[37] =
+static const flex_int16_t yy_accept[17] =
     {   0,
-        0,    0,    0,    0,    0,    0,    0,    0,    0,    0,
-       15,   14,    2,    1,    3,    7,   14,    9,   14,   14,
-       14,   14,    0,    1,    0,    6,    8,    0,   11,    0,
-       13,    4,    5,   10,   12,    0
+        0,    0,   12,    1,   10,    8,    5,    4,    6,    7,
+        3,    9,   11,    2,    3,    0
     } ;
 
 static const YY_CHAR yy_ec[256] =
     {   0,
-        1,    1,    1,    1,    1,    1,    1,    1,    1,    2,
-        1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
-        1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
-        1,    1,    1,    3,    4,    1,    1,    1,    5,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
+        1,    2,    1,    1,    1,    1,    3,    1,    1,    1,
+        1,    4,    5,    1,    6,    1,    7,    8,    8,    8,
+        8,    8,    8,    8,    8,    8,    8,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
-        1,    6,    1,    1,    1,    1,    1,    1,    1,    1,
+        1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
+        1,    1,    1,    9,    1,    1,    1,    1,    1,    1,
 
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
-        1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
+        1,    1,    1,   10,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
@@ -400,45 +398,35 @@ static const YY_CHAR yy_ec[256] =
         1,    1,    1,    1,    1
     } ;
 
-static const YY_CHAR yy_meta[7] =
+static const YY_CHAR yy_meta[11] =
     {   0,
-        1,    2,    3,    1,    4,    1
+        1,    1,    1,    1,    1,    1,    1,    1,    1,    1
     } ;
 
-static const flex_int16_t yy_base[49] =
+static const flex_int16_t yy_base[17] =
     {   0,
-        0,    0,    4,    8,   31,   30,   12,    0,   14,    0,
-       34,   37,    0,    0,    0,   37,   18,   37,    0,    0,
-        0,    0,    0,    0,    0,   37,   37,    0,   37,    0,
-       37,   37,   37,   37,   37,   37,   23,   30,   27,   28,
-       26,   19,   13,   12,   10,    8,    6,    4
+        0,    0,   15,   16,   16,   16,   16,   16,    6,   16,
+        5,   16,   16,    4,    3,   16
     } ;
 
-static const flex_int16_t yy_def[49] =
+static const flex_int16_t yy_def[17] =
     {   0,
-       36,    1,   37,   37,   37,   37,   37,    7,   37,    9,
-       36,   36,   38,   39,   40,   36,   36,   36,   41,   42,
-       43,   44,   45,   39,   46,   36,   36,   47,   36,   48,
-       36,   36,   36,   36,   36,    0,   36,   36,   36,   36,
-       36,   36,   36,   36,   36,   36,   36,   36
+       16,    1,   16,   16,   16,   16,   16,   16,   16,   16,
+       16,   16,   16,   16,   16,    0
     } ;
 
-static const flex_int16_t yy_nxt[44] =
+static const flex_int16_t yy_nxt[27] =
     {   0,
-       12,   12,   13,   14,   15,   12,   16,   35,   34,   17,
-       16,   33,   32,   17,   19,   31,   30,   20,   21,   22,
-       26,   29,   27,   12,   12,   12,   12,   24,   28,   24,
-       24,   25,   23,   36,   18,   18,   11,   36,   36,   36,
-       36,   36,   36
+        4,    5,    6,    7,    8,    9,   10,   11,   12,   13,
+       15,   14,   15,   14,   16,    3,   16,   16,   16,   16,
+       16,   16,   16,   16,   16,   16
     } ;
 
-static const flex_int16_t yy_chk[44] =
+static const flex_int16_t yy_chk[27] =
     {   0,
-        1,    1,    1,    1,    1,    1,    3,   48,   47,    3,
-        4,   46,   45,    4,    7,   44,   43,    7,    9,    9,
-       17,   42,   17,   37,   37,   37,   37,   39,   41,   39,
-       39,   40,   38,   11,    6,    5,   36,   36,   36,   36,
-       36,   36,   36
+        1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
+       15,   14,   11,    9,    3,   16,   16,   16,   16,   16,
+       16,   16,   16,   16,   16,   16
     } ;
 
 static yy_state_type yy_last_accepting_state;
@@ -455,19 +443,27 @@ int yy_flex_debug = 0;
 #define YY_MORE_ADJ 0
 #define YY_RESTORE_YY_MORE_OFFSET
 char *yytext;
-#line 1 "zad2.l"
-#line 2 "zad2.l"
+#line 1 "zad4.l"
+#line 2 "zad4.l"
+#define MAX_SIZE 1024
 #include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
 int yylex();
-#line 463 "lex.yy.c"
+int stack[MAX_SIZE];
+int stack_pointer = -1;
 
+int power(int a, int b){
+    int res = 1;
+    for(int i=0; i<b; i++){
+        res*=a;
+    }
+    return res;
+}
+#line 464 "lex.yy.c"
 #line 465 "lex.yy.c"
 
 #define INITIAL 0
-#define single_line_double_quote_string 1
-#define single_line_single_quote_string 2
-#define double_line_double_quote_string 3
-#define double_line_single_quote_string 4
 
 #ifndef YY_NO_UNISTD_H
 /* Special case for "unistd.h", since it is non-ANSI. We include it way
@@ -682,9 +678,9 @@ YY_DECL
 		}
 
 	{
-#line 11 "zad2.l"
+#line 19 "zad4.l"
 
-#line 688 "lex.yy.c"
+#line 684 "lex.yy.c"
 
 	while ( /*CONSTCOND*/1 )		/* loops until end-of-file is reached */
 		{
@@ -711,13 +707,13 @@ yy_match:
 			while ( yy_chk[yy_base[yy_current_state] + yy_c] != yy_current_state )
 				{
 				yy_current_state = (int) yy_def[yy_current_state];
-				if ( yy_current_state >= 37 )
+				if ( yy_current_state >= 17 )
 					yy_c = yy_meta[yy_c];
 				}
 			yy_current_state = yy_nxt[yy_base[yy_current_state] + yy_c];
 			++yy_cp;
 			}
-		while ( yy_base[yy_current_state] != 37 );
+		while ( yy_base[yy_current_state] != 16 );
 
 yy_find_action:
 		yy_act = yy_accept[yy_current_state];
@@ -742,81 +738,130 @@ do_action:	/* This label is used only to access EOF actions. */
 			goto yy_find_action;
 
 case 1:
+/* rule 1 can match eol */
 YY_RULE_SETUP
-#line 12 "zad2.l"
-;
+#line 20 "zad4.l"
+{
+    fprintf(stderr, "Błąd - niedozwolony znak \"%s\"\n", yytext);
+    exit(1);
+}
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 13 "zad2.l"
-ECHO; BEGIN(single_line_double_quote_string);
+#line 24 "zad4.l"
+{
+    if(stack_pointer == MAX_SIZE-1){
+        fprintf(stderr, "Błąd - przekroczono limit stosu.\n");
+        exit(1);
+    }
+    stack_pointer += 1;
+    stack[stack_pointer] = atoi(yytext);
+}
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 14 "zad2.l"
-ECHO; BEGIN(single_line_single_quote_string);
+#line 32 "zad4.l"
+{
+    if(stack_pointer == MAX_SIZE-1){
+        fprintf(stderr, "Błąd - przekroczono limit stosu.\n");
+        exit(1);
+    }
+    stack_pointer += 1;
+    stack[stack_pointer] = atoi(yytext);
+}
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 15 "zad2.l"
-ECHO; BEGIN(double_line_double_quote_string);
+#line 40 "zad4.l"
+{
+    if(stack_pointer == 0){
+        fprintf(stderr, "Błąd - za mała liczba argumentów.\n");
+        exit(1);
+    }
+    stack[stack_pointer-1] = stack[stack_pointer-1] + stack[stack_pointer];
+    stack_pointer -= 1;
+}
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 16 "zad2.l"
-ECHO; BEGIN(double_line_single_quote_string);
+#line 48 "zad4.l"
+{
+    if(stack_pointer == 0){
+        fprintf(stderr, "Błąd - za mała liczba argumentów.\n");
+        exit(1);
+    }
+    stack[stack_pointer-1] = stack[stack_pointer-1] * stack[stack_pointer];
+    stack_pointer -= 1;
+}
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 18 "zad2.l"
-ECHO;
+#line 56 "zad4.l"
+{
+    if(stack_pointer == 0){
+        fprintf(stderr, "Błąd - za mała liczba argumentów.\n");
+        exit(1);
+    }
+    stack[stack_pointer-1] = stack[stack_pointer-1] - stack[stack_pointer];
+    stack_pointer -= 1;
+}
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 19 "zad2.l"
-{ ECHO; BEGIN(INITIAL); }
+#line 64 "zad4.l"
+{
+    if(stack_pointer == 0){
+        fprintf(stderr, "Błąd - za mała liczba argumentów.\n");
+        exit(1);
+    }
+    if(stack[stack_pointer] == 0){
+        fprintf(stderr, "Błąd - wykryto dzielenie przez 0.\n");
+        exit(1);
+    }
+    stack[stack_pointer-1] = stack[stack_pointer-1] / stack[stack_pointer];
+    stack_pointer -= 1;
+}
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
-#line 20 "zad2.l"
-ECHO;
+#line 76 "zad4.l"
+{
+    if(stack_pointer == 0){
+        fprintf(stderr, "Błąd - za mała liczba argumentów.\n");
+        exit(1);
+    }
+    if(stack[stack_pointer] == 0){
+        fprintf(stderr, "Błąd - wykryto obliczanie reszty z dzielenia przez 0.\n");
+        exit(1);
+    }
+    stack[stack_pointer-1] = stack[stack_pointer-1] % stack[stack_pointer];
+    stack_pointer -= 1;
+}
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
-#line 21 "zad2.l"
-{ ECHO; BEGIN(INITIAL); }
+#line 88 "zad4.l"
+{
+    if(stack_pointer == 0){
+        fprintf(stderr, "Błąd - za mała liczba argumentów.\n");
+        exit(1);
+    }
+    stack[stack_pointer-1] = power(stack[stack_pointer-1],stack[stack_pointer]);
+    stack_pointer -= 1;
+}
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
-#line 22 "zad2.l"
-{ ECHO; BEGIN(INITIAL); }
+#line 96 "zad4.l"
+;
 	YY_BREAK
 case 11:
 YY_RULE_SETUP
-#line 23 "zad2.l"
+#line 97 "zad4.l"
 ECHO;
 	YY_BREAK
-case 12:
-YY_RULE_SETUP
-#line 24 "zad2.l"
-{ ECHO; BEGIN(INITIAL); }
-	YY_BREAK
-case 13:
-YY_RULE_SETUP
-#line 25 "zad2.l"
-ECHO;
-	YY_BREAK
-case 14:
-YY_RULE_SETUP
-#line 26 "zad2.l"
-ECHO;
-	YY_BREAK
-#line 815 "lex.yy.c"
+#line 864 "lex.yy.c"
 case YY_STATE_EOF(INITIAL):
-case YY_STATE_EOF(single_line_double_quote_string):
-case YY_STATE_EOF(single_line_single_quote_string):
-case YY_STATE_EOF(double_line_double_quote_string):
-case YY_STATE_EOF(double_line_single_quote_string):
 	yyterminate();
 
 	case YY_END_OF_BUFFER:
@@ -1112,7 +1157,7 @@ static int yy_get_next_buffer (void)
 		while ( yy_chk[yy_base[yy_current_state] + yy_c] != yy_current_state )
 			{
 			yy_current_state = (int) yy_def[yy_current_state];
-			if ( yy_current_state >= 37 )
+			if ( yy_current_state >= 17 )
 				yy_c = yy_meta[yy_c];
 			}
 		yy_current_state = yy_nxt[yy_base[yy_current_state] + yy_c];
@@ -1140,11 +1185,11 @@ static int yy_get_next_buffer (void)
 	while ( yy_chk[yy_base[yy_current_state] + yy_c] != yy_current_state )
 		{
 		yy_current_state = (int) yy_def[yy_current_state];
-		if ( yy_current_state >= 37 )
+		if ( yy_current_state >= 17 )
 			yy_c = yy_meta[yy_c];
 		}
 	yy_current_state = yy_nxt[yy_base[yy_current_state] + yy_c];
-	yy_is_jam = (yy_current_state == 36);
+	yy_is_jam = (yy_current_state == 16);
 
 		return yy_is_jam ? 0 : yy_current_state;
 }
@@ -1820,9 +1865,25 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 26 "zad2.l"
+#line 97 "zad4.l"
 
 
-int main() { 
-    return yylex(); 
+
+
+void print_stack(){
+    int i = 0;
+    for(int i=0; i<stack_pointer; i++){
+        printf("%d ", stack[i]);
+    }
+    printf("\n");
+}
+
+int main(int argc, char **argv) {
+    yylex();
+    if(stack_pointer != 0){
+        fprintf(stderr, "Błąd - za mała liczba operatorów.\n");
+        exit(1);
+    }
+    printf("= %d\n", stack[stack_pointer]);
+    return 0;
 }
