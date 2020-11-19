@@ -34,4 +34,6 @@
 <COM>.  ;
 <COM>\\\n    ;
 <COM>\n BEGIN(INITIAL);
+
+<INITIAL>.  ;
 %%

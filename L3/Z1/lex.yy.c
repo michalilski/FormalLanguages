@@ -354,8 +354,8 @@ static void yynoreturn yy_fatal_error ( const char* msg  );
 	(yy_hold_char) = *yy_cp; \
 	*yy_cp = '\0'; \
 	(yy_c_buf_p) = yy_cp;
-#define YY_NUM_RULES 17
-#define YY_END_OF_BUFFER 18
+#define YY_NUM_RULES 18
+#define YY_END_OF_BUFFER 19
 /* This struct is not used in this scanner,
    but its presence is necessary. */
 struct yy_trans_info
@@ -365,7 +365,7 @@ struct yy_trans_info
 	};
 static const flex_int16_t yy_accept[28] =
     {   0,
-        0,    0,    0,    0,   18,   17,   12,    1,   13,    7,
+        0,    0,    0,    0,   19,   17,   12,    1,   13,    7,
         9,   10,    5,    3,    4,    6,    2,   17,    8,   14,
        16,   14,   12,    2,   11,   15,    0
     } ;
@@ -829,10 +829,15 @@ BEGIN(INITIAL);
 	YY_BREAK
 case 17:
 YY_RULE_SETUP
-#line 37 "zad1.l"
+#line 38 "zad1.l"
+;
+	YY_BREAK
+case 18:
+YY_RULE_SETUP
+#line 39 "zad1.l"
 ECHO;
 	YY_BREAK
-#line 836 "lex.yy.c"
+#line 841 "lex.yy.c"
 case YY_STATE_EOF(INITIAL):
 case YY_STATE_EOF(COM):
 	yyterminate();
@@ -1838,5 +1843,5 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 37 "zad1.l"
+#line 39 "zad1.l"
 

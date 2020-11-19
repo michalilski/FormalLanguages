@@ -66,7 +66,7 @@
 
 
 /* First part of user prologue.  */
-#line 2 "zad1.y"
+#line 1 "zad1.y"
 
   #include <math.h>
   #include <stdio.h>
@@ -77,8 +77,9 @@
   void yyerror(char const*);
   std::string res = "";
   int p = 1234577;
+  bool is_err = 0;
 
-#line 82 "zad1.tab.c"
+#line 83 "zad1.tab.c"
 
 # ifndef YY_CAST
 #  ifdef __cplusplus
@@ -515,8 +516,8 @@ static const yytype_int8 yytranslate[] =
   /* YYRLINE[YYN] -- Source line where rule number YYN was defined.  */
 static const yytype_int8 yyrline[] =
 {
-       0,    26,    26,    27,    31,    32,    41,    46,    47,    48,
-      49,    50,    55,    56,    60
+       0,    25,    25,    26,    30,    31,    61,    66,    67,    68,
+      69,    77,    83,    84,    88
 };
 #endif
 
@@ -1318,89 +1319,125 @@ yyreduce:
   switch (yyn)
     {
   case 4:
-#line 31 "zad1.y"
+#line 30 "zad1.y"
      {res = "";}
-#line 1324 "zad1.tab.c"
+#line 1325 "zad1.tab.c"
     break;
 
   case 5:
-#line 32 "zad1.y"
-            { 
-      printf ("Wynik: %ld\n", convert(yyvsp[-1], p));
-      std::cout << res << std::endl;
-      res = "";
+#line 31 "zad1.y"
+            {
+      if(!is_err){
+        if(res != ""){
+          for(std::string::size_type i=0; i<res.size(); ++i){
+            if(res[i]=='#'){
+              res[i] = '\0';
+              if(i>0){
+                res[i-1] = '\0';
+              }
+              if(i>1){
+                int j = i-2;
+                while(res[j]!=' ' && j>=0){
+                  res[j] = '\0';
+                  j--;
+                }
+              }
+            }
+          }
+        }
+
+        std::cout << res << std::endl;
+        std::cout << "Wynik: " << convert(yyvsp[-1], p) << std::endl;
+      }
       std::cout << std::endl;
+      res = "";
+      is_err = 0;
     }
-#line 1335 "zad1.tab.c"
+#line 1357 "zad1.tab.c"
     break;
 
   case 6:
-#line 41 "zad1.y"
-                     {
+#line 61 "zad1.y"
+                     { 
                       yyval = convert(yyvsp[0], p); 
                       res.append(std::to_string(convert(yyvsp[0], p)));
                       res.append(" ");
                      }
-#line 1345 "zad1.tab.c"
+#line 1367 "zad1.tab.c"
     break;
 
   case 7:
-#line 46 "zad1.y"
+#line 66 "zad1.y"
                      { yyval = convert(yyvsp[-2] + yyvsp[0], p); res.append("+ ");}
-#line 1351 "zad1.tab.c"
+#line 1373 "zad1.tab.c"
     break;
 
   case 8:
-#line 47 "zad1.y"
+#line 67 "zad1.y"
                      { yyval = convert(yyvsp[-2] - yyvsp[0], p); res.append("- ");}
-#line 1357 "zad1.tab.c"
+#line 1379 "zad1.tab.c"
     break;
 
   case 9:
-#line 48 "zad1.y"
+#line 68 "zad1.y"
                      { yyval = convert(yyvsp[-2] * yyvsp[0], p); res.append("* ");}
-#line 1363 "zad1.tab.c"
+#line 1385 "zad1.tab.c"
     break;
 
   case 10:
-#line 49 "zad1.y"
-                     { yyval = divide(yyvsp[-2], yyvsp[0], p); res.append("/ ");}
-#line 1369 "zad1.tab.c"
+#line 69 "zad1.y"
+                     { 
+                       if(yyvsp[0] == 0){
+                         yyerror("Error: Found divion by 0.");
+                       }
+                       else{
+                         yyval = divide(yyvsp[-2], yyvsp[0], p); res.append("/ ");
+                       }
+                     }
+#line 1398 "zad1.tab.c"
     break;
 
   case 11:
-#line 50 "zad1.y"
+#line 77 "zad1.y"
                      {
+                       res.append("#");
                        yyval = convert(-yyvsp[0], p);
                        res.append(std::to_string(convert(-yyvsp[0], p)));
                        res.append(" ");
                      }
-#line 1379 "zad1.tab.c"
+#line 1409 "zad1.tab.c"
     break;
 
   case 12:
-#line 55 "zad1.y"
+#line 83 "zad1.y"
                      { yyval = power(yyvsp[-2], yyvsp[0], p); res.append("^ ");}
-#line 1385 "zad1.tab.c"
+#line 1415 "zad1.tab.c"
     break;
 
   case 13:
-#line 56 "zad1.y"
+#line 84 "zad1.y"
                      { 
-                       yyval = convert(yyvsp[-1], p); 
+                       yyval = convert(yyvsp[-1], p);
                        res.append(" ");
                      }
-#line 1394 "zad1.tab.c"
+#line 1424 "zad1.tab.c"
     break;
 
   case 14:
-#line 60 "zad1.y"
-                     { yyval = convert(yyvsp[-2] % yyvsp[0], p); res.append("% ");}
-#line 1400 "zad1.tab.c"
+#line 88 "zad1.y"
+                     { 
+                       if(yyvsp[0] == 0){
+                         yyerror("Error: Found modulo by 0.");
+                       }
+                       else{
+                         yyval = convert(yyvsp[-2] % yyvsp[0], p); res.append("% ");
+                       }
+                     }
+#line 1437 "zad1.tab.c"
     break;
 
 
-#line 1404 "zad1.tab.c"
+#line 1441 "zad1.tab.c"
 
       default: break;
     }
@@ -1632,13 +1669,18 @@ yyreturn:
 #endif
   return yyresult;
 }
-#line 62 "zad1.y"
+#line 97 "zad1.y"
 
 
 void yyerror(char const* err){
-  std::cout << err << std::endl;
+  if(err == "syntax error"){
+    std::cout << "Blad." << std::endl;
+  }
+  else{
+    std::cout << err << std::endl;
+  }
+  is_err = 1;
 }
-
 
 int main() {
   return yyparse();
