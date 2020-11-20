@@ -58,8 +58,7 @@ extern int yydebug;
     MUL = 264,
     DIV = 265,
     MOD = 266,
-    POW = 267,
-    NEG = 268
+    POW = 267
   };
 #endif
 

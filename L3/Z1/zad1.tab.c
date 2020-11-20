@@ -136,8 +136,7 @@ extern int yydebug;
     MUL = 264,
     DIV = 265,
     MOD = 266,
-    POW = 267,
-    NEG = 268
+    POW = 267
   };
 #endif
 
@@ -462,7 +461,7 @@ union yyalloc
 #define YYLAST   40
 
 /* YYNTOKENS -- Number of terminals.  */
-#define YYNTOKENS  14
+#define YYNTOKENS  13
 /* YYNNTS -- Number of nonterminals.  */
 #define YYNNTS  4
 /* YYNRULES -- Number of rules.  */
@@ -471,7 +470,7 @@ union yyalloc
 #define YYNSTATES  25
 
 #define YYUNDEFTOK  2
-#define YYMAXUTOK   268
+#define YYMAXUTOK   267
 
 
 /* YYTRANSLATE(TOKEN-NUM) -- Symbol number corresponding to TOKEN-NUM
@@ -509,15 +508,15 @@ static const yytype_int8 yytranslate[] =
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     1,     2,     3,     4,
-       5,     6,     7,     8,     9,    10,    11,    12,    13
+       5,     6,     7,     8,     9,    10,    11,    12
 };
 
 #if YYDEBUG
   /* YYRLINE[YYN] -- Source line where rule number YYN was defined.  */
 static const yytype_int8 yyrline[] =
 {
-       0,    25,    25,    26,    30,    31,    61,    66,    67,    68,
-      69,    77,    83,    84,    88
+       0,    24,    24,    25,    29,    30,    60,    65,    66,    67,
+      68,    76,    82,    83,    87
 };
 #endif
 
@@ -527,7 +526,7 @@ static const yytype_int8 yyrline[] =
 static const char *const yytname[] =
 {
   "$end", "error", "$undefined", "NUM", "NL", "LSB", "RSB", "SUB", "ADD",
-  "MUL", "DIV", "MOD", "POW", "NEG", "$accept", "input", "line", "exp", YY_NULLPTR
+  "MUL", "DIV", "MOD", "POW", "$accept", "input", "line", "exp", YY_NULLPTR
 };
 #endif
 
@@ -537,7 +536,7 @@ static const char *const yytname[] =
 static const yytype_int16 yytoknum[] =
 {
        0,   256,   257,   258,   259,   260,   261,   262,   263,   264,
-     265,   266,   267,   268
+     265,   266,   267
 };
 # endif
 
@@ -556,7 +555,7 @@ static const yytype_int16 yytoknum[] =
 static const yytype_int8 yypact[] =
 {
      -10,    22,   -10,   -10,   -10,    -1,    -1,   -10,     9,    24,
-     -10,   -10,    -1,    -1,    -1,    -1,    -1,    -1,   -10,    28,
+      28,   -10,    -1,    -1,    -1,    -1,    -1,    -1,   -10,    28,
       28,    -9,    -9,    -9,    -9
 };
 
@@ -566,8 +565,8 @@ static const yytype_int8 yypact[] =
 static const yytype_int8 yydefact[] =
 {
        2,     0,     1,     6,     4,     0,     0,     3,     0,     0,
-      11,     5,     0,     0,     0,     0,     0,     0,    13,     8,
-       7,     9,    10,    14,    12
+      11,     5,     0,     0,     0,     0,     0,     0,    13,     7,
+       8,     9,    10,    14,    12
 };
 
   /* YYPGOTO[NTERM-NUM].  */
@@ -607,16 +606,16 @@ static const yytype_int8 yycheck[] =
      symbol of state STATE-NUM.  */
 static const yytype_int8 yystos[] =
 {
-       0,    15,     0,     3,     4,     5,     7,    16,    17,    17,
-      17,     4,     7,     8,     9,    10,    11,    12,     6,    17,
-      17,    17,    17,    17,    17
+       0,    14,     0,     3,     4,     5,     7,    15,    16,    16,
+      16,     4,     7,     8,     9,    10,    11,    12,     6,    16,
+      16,    16,    16,    16,    16
 };
 
   /* YYR1[YYN] -- Symbol number of symbol that rule YYN derives.  */
 static const yytype_int8 yyr1[] =
 {
-       0,    14,    15,    15,    16,    16,    17,    17,    17,    17,
-      17,    17,    17,    17,    17
+       0,    13,    14,    14,    15,    15,    16,    16,    16,    16,
+      16,    16,    16,    16,    16
 };
 
   /* YYR2[YYN] -- Number of symbols on the right hand side of rule YYN.  */
@@ -1319,13 +1318,13 @@ yyreduce:
   switch (yyn)
     {
   case 4:
-#line 30 "zad1.y"
+#line 29 "zad1.y"
      {res = "";}
-#line 1325 "zad1.tab.c"
+#line 1324 "zad1.tab.c"
     break;
 
   case 5:
-#line 31 "zad1.y"
+#line 30 "zad1.y"
             {
       if(!is_err){
         if(res != ""){
@@ -1353,39 +1352,39 @@ yyreduce:
       res = "";
       is_err = 0;
     }
-#line 1357 "zad1.tab.c"
+#line 1356 "zad1.tab.c"
     break;
 
   case 6:
-#line 61 "zad1.y"
+#line 60 "zad1.y"
                      { 
                       yyval = convert(yyvsp[0], p); 
                       res.append(std::to_string(convert(yyvsp[0], p)));
                       res.append(" ");
                      }
-#line 1367 "zad1.tab.c"
+#line 1366 "zad1.tab.c"
     break;
 
   case 7:
-#line 66 "zad1.y"
-                     { yyval = convert(yyvsp[-2] + yyvsp[0], p); res.append("+ ");}
-#line 1373 "zad1.tab.c"
+#line 65 "zad1.y"
+                     { yyval = convert(yyvsp[-2] - yyvsp[0], p); res.append("- ");}
+#line 1372 "zad1.tab.c"
     break;
 
   case 8:
-#line 67 "zad1.y"
-                     { yyval = convert(yyvsp[-2] - yyvsp[0], p); res.append("- ");}
-#line 1379 "zad1.tab.c"
+#line 66 "zad1.y"
+                     { yyval = convert(yyvsp[-2] + yyvsp[0], p); res.append("+ ");}
+#line 1378 "zad1.tab.c"
     break;
 
   case 9:
-#line 68 "zad1.y"
+#line 67 "zad1.y"
                      { yyval = convert(yyvsp[-2] * yyvsp[0], p); res.append("* ");}
-#line 1385 "zad1.tab.c"
+#line 1384 "zad1.tab.c"
     break;
 
   case 10:
-#line 69 "zad1.y"
+#line 68 "zad1.y"
                      { 
                        if(yyvsp[0] == 0){
                          yyerror("Error: Found divion by 0.");
@@ -1394,37 +1393,37 @@ yyreduce:
                          yyval = divide(yyvsp[-2], yyvsp[0], p); res.append("/ ");
                        }
                      }
-#line 1398 "zad1.tab.c"
+#line 1397 "zad1.tab.c"
     break;
 
   case 11:
-#line 77 "zad1.y"
+#line 76 "zad1.y"
                      {
                        res.append("#");
                        yyval = convert(-yyvsp[0], p);
                        res.append(std::to_string(convert(-yyvsp[0], p)));
                        res.append(" ");
                      }
-#line 1409 "zad1.tab.c"
+#line 1408 "zad1.tab.c"
     break;
 
   case 12:
-#line 83 "zad1.y"
+#line 82 "zad1.y"
                      { yyval = power(yyvsp[-2], yyvsp[0], p); res.append("^ ");}
-#line 1415 "zad1.tab.c"
+#line 1414 "zad1.tab.c"
     break;
 
   case 13:
-#line 84 "zad1.y"
+#line 83 "zad1.y"
                      { 
                        yyval = convert(yyvsp[-1], p);
                        res.append(" ");
                      }
-#line 1424 "zad1.tab.c"
+#line 1423 "zad1.tab.c"
     break;
 
   case 14:
-#line 88 "zad1.y"
+#line 87 "zad1.y"
                      { 
                        if(yyvsp[0] == 0){
                          yyerror("Error: Found modulo by 0.");
@@ -1433,11 +1432,11 @@ yyreduce:
                          yyval = convert(yyvsp[-2] % yyvsp[0], p); res.append("% ");
                        }
                      }
-#line 1437 "zad1.tab.c"
+#line 1436 "zad1.tab.c"
     break;
 
 
-#line 1441 "zad1.tab.c"
+#line 1440 "zad1.tab.c"
 
       default: break;
     }
@@ -1669,7 +1668,7 @@ yyreturn:
 #endif
   return yyresult;
 }
-#line 97 "zad1.y"
+#line 96 "zad1.y"
 
 
 void yyerror(char const* err){

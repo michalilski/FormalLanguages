@@ -1,0 +1,518 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Grammar
+
+Rule 0     S' -> input
+Rule 1     input -> <empty>
+Rule 2     input -> input line
+Rule 3     line -> NL
+Rule 4     line -> exp NL
+Rule 5     exp -> NUM
+Rule 6     exp -> exp ADD exp
+Rule 7     exp -> exp SUB exp
+Rule 8     exp -> SUB exp
+Rule 9     exp -> exp MUL exp
+Rule 10    exp -> exp DIV exp
+Rule 11    exp -> LSB exp RSB
+Rule 12    exp -> exp POW exp
+Rule 13    exp -> exp MOD exp
+
+Terminals, with rules where they appear
+
+ADD                  : 6
+DIV                  : 10
+LSB                  : 11
+MOD                  : 13
+MUL                  : 9
+NL                   : 3 4
+NUM                  : 5
+POW                  : 12
+RSB                  : 11
+SUB                  : 7 8
+error                : 
+
+Nonterminals, with rules where they appear
+
+exp                  : 4 6 6 7 7 8 9 9 10 10 11 12 12 13 13
+input                : 2 0
+line                 : 2
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . input
+    (1) input -> .
+    (2) input -> . input line
+
+    NL              reduce using rule 1 (input -> .)
+    NUM             reduce using rule 1 (input -> .)
+    SUB             reduce using rule 1 (input -> .)
+    LSB             reduce using rule 1 (input -> .)
+    $end            reduce using rule 1 (input -> .)
+
+    input                          shift and go to state 1
+
+state 1
+
+    (0) S' -> input .
+    (2) input -> input . line
+    (3) line -> . NL
+    (4) line -> . exp NL
+    (5) exp -> . NUM
+    (6) exp -> . exp ADD exp
+    (7) exp -> . exp SUB exp
+    (8) exp -> . SUB exp
+    (9) exp -> . exp MUL exp
+    (10) exp -> . exp DIV exp
+    (11) exp -> . LSB exp RSB
+    (12) exp -> . exp POW exp
+    (13) exp -> . exp MOD exp
+
+    NL              shift and go to state 3
+    NUM             shift and go to state 5
+    SUB             shift and go to state 6
+    LSB             shift and go to state 7
+
+    line                           shift and go to state 2
+    exp                            shift and go to state 4
+
+state 2
+
+    (2) input -> input line .
+
+    NL              reduce using rule 2 (input -> input line .)
+    NUM             reduce using rule 2 (input -> input line .)
+    SUB             reduce using rule 2 (input -> input line .)
+    LSB             reduce using rule 2 (input -> input line .)
+    $end            reduce using rule 2 (input -> input line .)
+
+
+state 3
+
+    (3) line -> NL .
+
+    NL              reduce using rule 3 (line -> NL .)
+    NUM             reduce using rule 3 (line -> NL .)
+    SUB             reduce using rule 3 (line -> NL .)
+    LSB             reduce using rule 3 (line -> NL .)
+    $end            reduce using rule 3 (line -> NL .)
+
+
+state 4
+
+    (4) line -> exp . NL
+    (6) exp -> exp . ADD exp
+    (7) exp -> exp . SUB exp
+    (9) exp -> exp . MUL exp
+    (10) exp -> exp . DIV exp
+    (12) exp -> exp . POW exp
+    (13) exp -> exp . MOD exp
+
+    NL              shift and go to state 8
+    ADD             shift and go to state 9
+    SUB             shift and go to state 10
+    MUL             shift and go to state 11
+    DIV             shift and go to state 12
+    POW             shift and go to state 13
+    MOD             shift and go to state 14
+
+
+state 5
+
+    (5) exp -> NUM .
+
+    NL              reduce using rule 5 (exp -> NUM .)
+    ADD             reduce using rule 5 (exp -> NUM .)
+    SUB             reduce using rule 5 (exp -> NUM .)
+    MUL             reduce using rule 5 (exp -> NUM .)
+    DIV             reduce using rule 5 (exp -> NUM .)
+    POW             reduce using rule 5 (exp -> NUM .)
+    MOD             reduce using rule 5 (exp -> NUM .)
+    RSB             reduce using rule 5 (exp -> NUM .)
+
+
+state 6
+
+    (8) exp -> SUB . exp
+    (5) exp -> . NUM
+    (6) exp -> . exp ADD exp
+    (7) exp -> . exp SUB exp
+    (8) exp -> . SUB exp
+    (9) exp -> . exp MUL exp
+    (10) exp -> . exp DIV exp
+    (11) exp -> . LSB exp RSB
+    (12) exp -> . exp POW exp
+    (13) exp -> . exp MOD exp
+
+    NUM             shift and go to state 5
+    SUB             shift and go to state 6
+    LSB             shift and go to state 7
+
+    exp                            shift and go to state 15
+
+state 7
+
+    (11) exp -> LSB . exp RSB
+    (5) exp -> . NUM
+    (6) exp -> . exp ADD exp
+    (7) exp -> . exp SUB exp
+    (8) exp -> . SUB exp
+    (9) exp -> . exp MUL exp
+    (10) exp -> . exp DIV exp
+    (11) exp -> . LSB exp RSB
+    (12) exp -> . exp POW exp
+    (13) exp -> . exp MOD exp
+
+    NUM             shift and go to state 5
+    SUB             shift and go to state 6
+    LSB             shift and go to state 7
+
+    exp                            shift and go to state 16
+
+state 8
+
+    (4) line -> exp NL .
+
+    NL              reduce using rule 4 (line -> exp NL .)
+    NUM             reduce using rule 4 (line -> exp NL .)
+    SUB             reduce using rule 4 (line -> exp NL .)
+    LSB             reduce using rule 4 (line -> exp NL .)
+    $end            reduce using rule 4 (line -> exp NL .)
+
+
+state 9
+
+    (6) exp -> exp ADD . exp
+    (5) exp -> . NUM
+    (6) exp -> . exp ADD exp
+    (7) exp -> . exp SUB exp
+    (8) exp -> . SUB exp
+    (9) exp -> . exp MUL exp
+    (10) exp -> . exp DIV exp
+    (11) exp -> . LSB exp RSB
+    (12) exp -> . exp POW exp
+    (13) exp -> . exp MOD exp
+
+    NUM             shift and go to state 5
+    SUB             shift and go to state 6
+    LSB             shift and go to state 7
+
+    exp                            shift and go to state 17
+
+state 10
+
+    (7) exp -> exp SUB . exp
+    (5) exp -> . NUM
+    (6) exp -> . exp ADD exp
+    (7) exp -> . exp SUB exp
+    (8) exp -> . SUB exp
+    (9) exp -> . exp MUL exp
+    (10) exp -> . exp DIV exp
+    (11) exp -> . LSB exp RSB
+    (12) exp -> . exp POW exp
+    (13) exp -> . exp MOD exp
+
+    NUM             shift and go to state 5
+    SUB             shift and go to state 6
+    LSB             shift and go to state 7
+
+    exp                            shift and go to state 18
+
+state 11
+
+    (9) exp -> exp MUL . exp
+    (5) exp -> . NUM
+    (6) exp -> . exp ADD exp
+    (7) exp -> . exp SUB exp
+    (8) exp -> . SUB exp
+    (9) exp -> . exp MUL exp
+    (10) exp -> . exp DIV exp
+    (11) exp -> . LSB exp RSB
+    (12) exp -> . exp POW exp
+    (13) exp -> . exp MOD exp
+
+    NUM             shift and go to state 5
+    SUB             shift and go to state 6
+    LSB             shift and go to state 7
+
+    exp                            shift and go to state 19
+
+state 12
+
+    (10) exp -> exp DIV . exp
+    (5) exp -> . NUM
+    (6) exp -> . exp ADD exp
+    (7) exp -> . exp SUB exp
+    (8) exp -> . SUB exp
+    (9) exp -> . exp MUL exp
+    (10) exp -> . exp DIV exp
+    (11) exp -> . LSB exp RSB
+    (12) exp -> . exp POW exp
+    (13) exp -> . exp MOD exp
+
+    NUM             shift and go to state 5
+    SUB             shift and go to state 6
+    LSB             shift and go to state 7
+
+    exp                            shift and go to state 20
+
+state 13
+
+    (12) exp -> exp POW . exp
+    (5) exp -> . NUM
+    (6) exp -> . exp ADD exp
+    (7) exp -> . exp SUB exp
+    (8) exp -> . SUB exp
+    (9) exp -> . exp MUL exp
+    (10) exp -> . exp DIV exp
+    (11) exp -> . LSB exp RSB
+    (12) exp -> . exp POW exp
+    (13) exp -> . exp MOD exp
+
+    NUM             shift and go to state 5
+    SUB             shift and go to state 6
+    LSB             shift and go to state 7
+
+    exp                            shift and go to state 21
+
+state 14
+
+    (13) exp -> exp MOD . exp
+    (5) exp -> . NUM
+    (6) exp -> . exp ADD exp
+    (7) exp -> . exp SUB exp
+    (8) exp -> . SUB exp
+    (9) exp -> . exp MUL exp
+    (10) exp -> . exp DIV exp
+    (11) exp -> . LSB exp RSB
+    (12) exp -> . exp POW exp
+    (13) exp -> . exp MOD exp
+
+    NUM             shift and go to state 5
+    SUB             shift and go to state 6
+    LSB             shift and go to state 7
+
+    exp                            shift and go to state 22
+
+state 15
+
+    (8) exp -> SUB exp .
+    (6) exp -> exp . ADD exp
+    (7) exp -> exp . SUB exp
+    (9) exp -> exp . MUL exp
+    (10) exp -> exp . DIV exp
+    (12) exp -> exp . POW exp
+    (13) exp -> exp . MOD exp
+
+    NL              reduce using rule 8 (exp -> SUB exp .)
+    ADD             reduce using rule 8 (exp -> SUB exp .)
+    SUB             reduce using rule 8 (exp -> SUB exp .)
+    MUL             reduce using rule 8 (exp -> SUB exp .)
+    DIV             reduce using rule 8 (exp -> SUB exp .)
+    POW             reduce using rule 8 (exp -> SUB exp .)
+    MOD             reduce using rule 8 (exp -> SUB exp .)
+    RSB             reduce using rule 8 (exp -> SUB exp .)
+
+  ! ADD             [ shift and go to state 9 ]
+  ! SUB             [ shift and go to state 10 ]
+  ! MUL             [ shift and go to state 11 ]
+  ! DIV             [ shift and go to state 12 ]
+  ! POW             [ shift and go to state 13 ]
+  ! MOD             [ shift and go to state 14 ]
+
+
+state 16
+
+    (11) exp -> LSB exp . RSB
+    (6) exp -> exp . ADD exp
+    (7) exp -> exp . SUB exp
+    (9) exp -> exp . MUL exp
+    (10) exp -> exp . DIV exp
+    (12) exp -> exp . POW exp
+    (13) exp -> exp . MOD exp
+
+    RSB             shift and go to state 23
+    ADD             shift and go to state 9
+    SUB             shift and go to state 10
+    MUL             shift and go to state 11
+    DIV             shift and go to state 12
+    POW             shift and go to state 13
+    MOD             shift and go to state 14
+
+
+state 17
+
+    (6) exp -> exp ADD exp .
+    (6) exp -> exp . ADD exp
+    (7) exp -> exp . SUB exp
+    (9) exp -> exp . MUL exp
+    (10) exp -> exp . DIV exp
+    (12) exp -> exp . POW exp
+    (13) exp -> exp . MOD exp
+
+    NL              reduce using rule 6 (exp -> exp ADD exp .)
+    ADD             reduce using rule 6 (exp -> exp ADD exp .)
+    SUB             reduce using rule 6 (exp -> exp ADD exp .)
+    RSB             reduce using rule 6 (exp -> exp ADD exp .)
+    MUL             shift and go to state 11
+    DIV             shift and go to state 12
+    POW             shift and go to state 13
+    MOD             shift and go to state 14
+
+  ! MUL             [ reduce using rule 6 (exp -> exp ADD exp .) ]
+  ! DIV             [ reduce using rule 6 (exp -> exp ADD exp .) ]
+  ! POW             [ reduce using rule 6 (exp -> exp ADD exp .) ]
+  ! MOD             [ reduce using rule 6 (exp -> exp ADD exp .) ]
+  ! ADD             [ shift and go to state 9 ]
+  ! SUB             [ shift and go to state 10 ]
+
+
+state 18
+
+    (7) exp -> exp SUB exp .
+    (6) exp -> exp . ADD exp
+    (7) exp -> exp . SUB exp
+    (9) exp -> exp . MUL exp
+    (10) exp -> exp . DIV exp
+    (12) exp -> exp . POW exp
+    (13) exp -> exp . MOD exp
+
+    NL              reduce using rule 7 (exp -> exp SUB exp .)
+    ADD             reduce using rule 7 (exp -> exp SUB exp .)
+    SUB             reduce using rule 7 (exp -> exp SUB exp .)
+    RSB             reduce using rule 7 (exp -> exp SUB exp .)
+    MUL             shift and go to state 11
+    DIV             shift and go to state 12
+    POW             shift and go to state 13
+    MOD             shift and go to state 14
+
+  ! MUL             [ reduce using rule 7 (exp -> exp SUB exp .) ]
+  ! DIV             [ reduce using rule 7 (exp -> exp SUB exp .) ]
+  ! POW             [ reduce using rule 7 (exp -> exp SUB exp .) ]
+  ! MOD             [ reduce using rule 7 (exp -> exp SUB exp .) ]
+  ! ADD             [ shift and go to state 9 ]
+  ! SUB             [ shift and go to state 10 ]
+
+
+state 19
+
+    (9) exp -> exp MUL exp .
+    (6) exp -> exp . ADD exp
+    (7) exp -> exp . SUB exp
+    (9) exp -> exp . MUL exp
+    (10) exp -> exp . DIV exp
+    (12) exp -> exp . POW exp
+    (13) exp -> exp . MOD exp
+
+    NL              reduce using rule 9 (exp -> exp MUL exp .)
+    ADD             reduce using rule 9 (exp -> exp MUL exp .)
+    SUB             reduce using rule 9 (exp -> exp MUL exp .)
+    MUL             reduce using rule 9 (exp -> exp MUL exp .)
+    DIV             reduce using rule 9 (exp -> exp MUL exp .)
+    MOD             reduce using rule 9 (exp -> exp MUL exp .)
+    RSB             reduce using rule 9 (exp -> exp MUL exp .)
+    POW             shift and go to state 13
+
+  ! POW             [ reduce using rule 9 (exp -> exp MUL exp .) ]
+  ! ADD             [ shift and go to state 9 ]
+  ! SUB             [ shift and go to state 10 ]
+  ! MUL             [ shift and go to state 11 ]
+  ! DIV             [ shift and go to state 12 ]
+  ! MOD             [ shift and go to state 14 ]
+
+
+state 20
+
+    (10) exp -> exp DIV exp .
+    (6) exp -> exp . ADD exp
+    (7) exp -> exp . SUB exp
+    (9) exp -> exp . MUL exp
+    (10) exp -> exp . DIV exp
+    (12) exp -> exp . POW exp
+    (13) exp -> exp . MOD exp
+
+    NL              reduce using rule 10 (exp -> exp DIV exp .)
+    ADD             reduce using rule 10 (exp -> exp DIV exp .)
+    SUB             reduce using rule 10 (exp -> exp DIV exp .)
+    MUL             reduce using rule 10 (exp -> exp DIV exp .)
+    DIV             reduce using rule 10 (exp -> exp DIV exp .)
+    MOD             reduce using rule 10 (exp -> exp DIV exp .)
+    RSB             reduce using rule 10 (exp -> exp DIV exp .)
+    POW             shift and go to state 13
+
+  ! POW             [ reduce using rule 10 (exp -> exp DIV exp .) ]
+  ! ADD             [ shift and go to state 9 ]
+  ! SUB             [ shift and go to state 10 ]
+  ! MUL             [ shift and go to state 11 ]
+  ! DIV             [ shift and go to state 12 ]
+  ! MOD             [ shift and go to state 14 ]
+
+
+state 21
+
+    (12) exp -> exp POW exp .
+    (6) exp -> exp . ADD exp
+    (7) exp -> exp . SUB exp
+    (9) exp -> exp . MUL exp
+    (10) exp -> exp . DIV exp
+    (12) exp -> exp . POW exp
+    (13) exp -> exp . MOD exp
+
+    NL              reduce using rule 12 (exp -> exp POW exp .)
+    ADD             reduce using rule 12 (exp -> exp POW exp .)
+    SUB             reduce using rule 12 (exp -> exp POW exp .)
+    MUL             reduce using rule 12 (exp -> exp POW exp .)
+    DIV             reduce using rule 12 (exp -> exp POW exp .)
+    MOD             reduce using rule 12 (exp -> exp POW exp .)
+    RSB             reduce using rule 12 (exp -> exp POW exp .)
+    POW             shift and go to state 13
+
+  ! POW             [ reduce using rule 12 (exp -> exp POW exp .) ]
+  ! ADD             [ shift and go to state 9 ]
+  ! SUB             [ shift and go to state 10 ]
+  ! MUL             [ shift and go to state 11 ]
+  ! DIV             [ shift and go to state 12 ]
+  ! MOD             [ shift and go to state 14 ]
+
+
+state 22
+
+    (13) exp -> exp MOD exp .
+    (6) exp -> exp . ADD exp
+    (7) exp -> exp . SUB exp
+    (9) exp -> exp . MUL exp
+    (10) exp -> exp . DIV exp
+    (12) exp -> exp . POW exp
+    (13) exp -> exp . MOD exp
+
+    NL              reduce using rule 13 (exp -> exp MOD exp .)
+    ADD             reduce using rule 13 (exp -> exp MOD exp .)
+    SUB             reduce using rule 13 (exp -> exp MOD exp .)
+    MUL             reduce using rule 13 (exp -> exp MOD exp .)
+    DIV             reduce using rule 13 (exp -> exp MOD exp .)
+    MOD             reduce using rule 13 (exp -> exp MOD exp .)
+    RSB             reduce using rule 13 (exp -> exp MOD exp .)
+    POW             shift and go to state 13
+
+  ! POW             [ reduce using rule 13 (exp -> exp MOD exp .) ]
+  ! ADD             [ shift and go to state 9 ]
+  ! SUB             [ shift and go to state 10 ]
+  ! MUL             [ shift and go to state 11 ]
+  ! DIV             [ shift and go to state 12 ]
+  ! MOD             [ shift and go to state 14 ]
+
+
+state 23
+
+    (11) exp -> LSB exp RSB .
+
+    NL              reduce using rule 11 (exp -> LSB exp RSB .)
+    ADD             reduce using rule 11 (exp -> LSB exp RSB .)
+    SUB             reduce using rule 11 (exp -> LSB exp RSB .)
+    MUL             reduce using rule 11 (exp -> LSB exp RSB .)
+    DIV             reduce using rule 11 (exp -> LSB exp RSB .)
+    POW             reduce using rule 11 (exp -> LSB exp RSB .)
+    MOD             reduce using rule 11 (exp -> LSB exp RSB .)
+    RSB             reduce using rule 11 (exp -> LSB exp RSB .)
+
