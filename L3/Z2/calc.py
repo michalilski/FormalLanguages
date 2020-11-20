@@ -23,8 +23,10 @@ states = (
 
 rpn = ''
 base = 1234577
+err = False
 
 t_ignore = ' \t'
+t_comment_ignore = ''
 
 t_ADD = r'\+'
 t_SUB = r'\-'
@@ -41,26 +43,30 @@ def t_NUM(t):
     t.value = int(t.value)
     return t
 
-def t_error(t):
-  print("Invalid Token:",t.value[0])
-  t.lexer.skip(1)
-
-
 def t_comment(t):
     r'\#'
     t.lexer.begin('comment')
 
-def t_comment_in(t):
-    r'.'
-    pass
-
-def t_comment_nl(t):
-    r'\\\n'
+def t_comment_body(t):
+    r'.|\\\n'
     pass
 
 def t_comment_end(t):
     r'\n'
     t.lexer.begin('INITIAL')
+
+def t_comment_error(t):
+    print("Invalid Comment Token:",t.value[0])
+    t.lexer.skip(1)
+
+def t_error(t):
+    print("Invalid Token:",t.value[0])
+    t.lexer.skip(1)
+
+def math_error(msg):
+    print(msg)
+    err = True
+
 
 lexer = lex.lex()
 
@@ -83,22 +89,25 @@ def p_line(p):
 def p_line2(p):
     'line : exp NL'
     global rpn
-    temp = list(rpn)
-    for i in range(len(temp)):
-        if temp[i] == '#':
-            temp[i] = ''
-            if i > 0:
-                temp[i-1] = ''
-                j = i-2
-                while temp[j]!=' ' and j>=0:
-                    temp[j] = ''
-                    j-=1
+    global err
+    if not err:
+        temp = list(rpn)
+        for i in range(len(temp)):
+            if temp[i] == '#':
+                temp[i] = ''
+                if i > 0:
+                    temp[i-1] = ''
+                    j = i-2
+                    while temp[j]!=' ' and j>=0:
+                        temp[j] = ''
+                        j-=1
 
-    rpn = ''.join(temp)  
-    print(rpn)
-    print('Wynik: ',p[1])
+        rpn = ''.join(temp)  
+        print(rpn)
+        print('Wynik: ',p[1])
     print()
     rpn = ''
+    err = False
 
 def p_num(p):
     'exp : NUM'
@@ -132,6 +141,12 @@ def p_mul(p):
 
 def p_div(p):
     'exp : exp DIV exp'
+    global err
+    if p[3] == 0:
+        err = 1
+        math_error('Found division by 0.')
+        return
+
     p[0] = convert(divide(p[1], p[3], base), base)
     global rpn 
     rpn += "/ "
@@ -148,6 +163,12 @@ def p_pow(p):
 
 def p_mod(p):
     'exp : exp MOD exp'
+    global err
+    if p[3] == 0:
+        err = 1
+        math_error('Found modulo by 0.')
+        return
+
     _, p[0], _ = convert(p[1]%p[3], base)
     global rpn 
     rpn += "% "
